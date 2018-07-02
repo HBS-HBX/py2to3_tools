@@ -1,0 +1,25 @@
+---
+  - name: Install virtualenv with pip
+    pip:
+      name: virtualenv
+      state: present
+
+  - name: "Ensure {{root_dir}} exists"
+    file: path="{{root_dir}}" state=directory
+
+  - name: Install python virtualenv
+    apt: pkg=python-virtualenv state=installed
+    become: true
+    become_user: root
+
+  - name: Create virtualenv
+    command: "virtualenv {{root_dir}}/{{clean_name}} -p python3 creates='{{root_dir}}/{{clean_name}}'"
+
+  - name: Upgrade pip
+    shell: "{{root_dir}}/{{clean_name}}/bin/pip install --upgrade pip"
+
+  - name: "Install {{project_name}} library"
+    shell: "{{root_dir}}/{{clean_name}}/bin/pip install {{project_name}}"
+
+  - name: Copy test_sources.py 
+    template: src=test_sources.py.j2 dest="{{root_dir}}/{{clean_name}}/test_sources.py"

@@ -1,0 +1,6 @@
+ansible/*retry
+Vagrantfile
+.vagrant
+id_rsa.pub
+ubuntu-xenial-16.04-cloudimg-console.log
+ansible/test_sources.*

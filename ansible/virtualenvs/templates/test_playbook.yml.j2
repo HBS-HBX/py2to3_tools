@@ -1,0 +1,8 @@
+---
+- name: Test project libraries for py3 compliance
+  hosts: "{% raw %}{{host}}{% endraw %}"
+  gather_facts: no
+
+  roles:{% for entry in entries %}
+    - role: virtualenvs/roles/{{entry.clean_name}}{% endfor %}{% for entry in entries %}
+    - role: virtualenvs/roles/{{entry.clean_name}}_test_sources{% endfor %}

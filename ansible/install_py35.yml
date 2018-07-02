@@ -1,0 +1,14 @@
+---
+- name: Deploy py3 instance
+  hosts: "{{host}}"
+  gather_facts: no
+  pre_tasks:
+  - name: install python 2
+    raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+    become: true
+    become_user: root
+
+  roles:
+    - role: python35
+      become: true
+      become_user: root
