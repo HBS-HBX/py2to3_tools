@@ -81,7 +81,7 @@ If the package is found on pypi then the script will look in the dist_tags infor
 
 Read more about PEP 425 here: https://www.python.org/dev/peps/pep-0425/
 
-## What do I do if my pypi package has no python3 information
+## What to do when the pypi package has no python3 information
 
 As mentioned above, this script will only work if the package developer remembers to provide the python3 PEP 425 tags in the **dist_tags** field.
 
